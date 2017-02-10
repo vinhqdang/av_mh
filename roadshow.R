@@ -41,4 +41,5 @@ build_dnn = function (train_data = h_train, hidden_layers = c(200,200),
                                epsilon = eps_value
                                )
   pred (dnn_model, raw_test = test, h2o_test_data = h_test, filename = out_filename)
+  dnn_model
 }
