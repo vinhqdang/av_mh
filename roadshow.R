@@ -9,7 +9,7 @@ if (!require(h2o)) {
 
 library (h2o)
 
-h2o.init()
+h2o.init(max_mem_size = "64g", nthreads = -1)
 
 h_train = as.h2o(train)
 h_test = as.h2o (test)
