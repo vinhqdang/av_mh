@@ -76,6 +76,10 @@ build_rf = function (train_data = h_train, ntree = 500,
 }
 
 # build_rf (maxdepth=15, nbincats=512, nbin=10, out_filename="rf_2.csv", ntree=2048)
+# build_rf (maxdepth=10, nbincats=256, nbin=10, out_filename="rf_2.csv", ntree=2048, samplerate=0.75)
+# build_rf (maxdepth=13, nbincats=512, nbin=15, out_filename="rf_6.csv", ntree=2048, samplerate=0.75)
+# build_rf (maxdepth=20, nbincats=512, nbin=10, out_filename="rf_4.csv", ntree=2048, samplerate=0.65)
+build_rf (maxdepth=13, nbincats=512, nbin=12, out_filename="rf_7.csv", ntree=1024, samplerate=0.95)
 
 build_gbm = function (train_data = h_train,
                      out_filename = "pred_gbm.csv",
