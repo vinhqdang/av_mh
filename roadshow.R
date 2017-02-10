@@ -15,7 +15,7 @@ h_train = as.h2o(train)
 h_test = as.h2o (test)
 
 pred = function (model, raw_test = test, h2o_test_data = h_test, filename = "pred.csv") {
-  p1 = h2o.predict(model, newdata = test_data)
+  p1 = h2o.predict(model, newdata = h2o_test_data)
   v1 = as.vector(p1$predict)
   v2 = as.factor(v1)
   d1 = data.frame (raw_test$Trip_ID, v2)
