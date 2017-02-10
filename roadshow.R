@@ -52,7 +52,7 @@ build_rf = function (train_data = h_train, ntree = 500,
                      nbincats=1024,
                      nbin=20,
                      col_sample_rate_per_tree = 1,
-                     sample_rate_per_class = 1,
+                     sample_rate_per_class = c(1,1,1),
                      balance=FALSE){
   rf_model = h2o.randomForest(x=1:13, y = 14, training_frame = train_data,
                                ntrees = ntree,
