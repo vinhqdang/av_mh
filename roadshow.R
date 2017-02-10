@@ -22,3 +22,21 @@ pred = function (model, raw_test = test, h2o_test_data = h_test, filename = "pre
   colnames(d1) = c("Trip_ID","Surge_Pricing_Type")
   write.csv(d1, file = filename, row.names = FALSE, quote = FALSE)
 }
+
+build_dnn = function (train_data = h_train, hidden_layers = c(200,200),
+                      l1 = 1e-5, l2=1e-5, dropout = c(0.2,0.2),
+                      rho_value = 0.99,
+                      eps_value = 1e-08){
+  dnn_model = h2o.deeplearning(x=1:13, y = 14, training_frame = train_data,
+                               score_validation_sampling = "Stratified", 
+                               stopping_rounds = 5, stopping_metric = "misclassification", 
+                               stopping_tolerance = 0.05,
+                               hidden = hidden_layers,
+                               l1=l1,
+                               l2=l2,
+                               activation = "RectifierWithDropout",
+                               hidden_dropout_ratios = dropout,
+                               rho = rho_value,
+                               epsilon = eps_value
+                               )
+}
