@@ -75,7 +75,7 @@ build_rf = function (train_data = h_train, ntree = 500,
   rf_model
 }
 
-build_rf (maxdepth=15, nbincats=512, nbin=10, out_filename="rf_2.csv", ntree=2048)
+# build_rf (maxdepth=15, nbincats=512, nbin=10, out_filename="rf_2.csv", ntree=2048)
 
 build_gbm = function (train_data = h_train,
                      out_filename = "pred_gbm.csv",
