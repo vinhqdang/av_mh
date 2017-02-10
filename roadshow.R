@@ -52,3 +52,19 @@ build_rf = function (train_data = h_train, ntree = 500,
   pred (rf_model, raw_test = test, h2o_test_data = h_test, filename = out_filename)
   rf_model
 }
+
+build_gbm = function (train_data = h_train,
+                     out_filename = "pred_gbm.csv",
+                     max_depth = 25,
+                     sample_rate = 0.5,
+                     col_sample_rate = 0.5,
+                     col_sample_rate_per_tree = 0.5){
+  gbm_model = h2o.randomForest(x=1:13, y = 14, training_frame = train_data,
+                              max_depth = max_depth,
+                              sample_rate = sample_rate,
+                              col_sample_rate = col_sample_rate,
+                              col_sample_rate_per_tree = col_sample_rate_per_tree
+  )
+  pred (gbm_model, raw_test = test, h2o_test_data = h_test, filename = out_filename)
+  gbm_model
+}
