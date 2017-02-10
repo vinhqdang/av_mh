@@ -50,7 +50,8 @@ build_rf = function (train_data = h_train, ntree = 500,
                      minrows = 1,mtries = -1,
                      samplerate = 0.5,
                      nbincats=1024,
-                     nbin=20){
+                     nbin=20,
+                     balance=FALSE){
   rf_model = h2o.randomForest(x=1:13, y = 14, training_frame = train_data,
                                ntrees = ntree,
                               max_depth = maxdepth,
@@ -61,7 +62,8 @@ build_rf = function (train_data = h_train, ntree = 500,
                               mtries = mtries,
                               sample_rate = samplerate,
                               nbins_cats = nbincats,
-                              nbins = nbin
+                              nbins = nbin,
+                              balance_classes = balance
   )
   pred (rf_model, raw_test = test, h2o_test_data = h_test, filename = out_filename)
   rf_model
