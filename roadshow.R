@@ -26,7 +26,8 @@ pred = function (model, raw_test = test, h2o_test_data = h_test, filename = "pre
 build_dnn = function (train_data = h_train, hidden_layers = c(200,200),
                       l1 = 1e-5, l2=1e-5, dropout = c(0.2,0.2),
                       rho_value = 0.99,
-                      eps_value = 1e-08){
+                      eps_value = 1e-08,
+                      out_filename = "pred_dnn.csv"){
   dnn_model = h2o.deeplearning(x=1:13, y = 14, training_frame = train_data,
                                score_validation_sampling = "Stratified", 
                                stopping_rounds = 5, stopping_metric = "misclassification", 
@@ -39,4 +40,5 @@ build_dnn = function (train_data = h_train, hidden_layers = c(200,200),
                                rho = rho_value,
                                epsilon = eps_value
                                )
+  pred (dnn_model, raw_test = test, h2o_test_data = h_test, filename = out_filename)
 }
